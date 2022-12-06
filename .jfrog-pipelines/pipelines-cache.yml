@@ -16,6 +16,6 @@ pipelines:
             - mkdir -p /tmp/npm_cache
             - restore_pipeline_files npm_cache /tmp/npm_cache/
             - jfrog rt npm-config --repo-resolve 'pip-npm-virtual' --server-id-resolve int_default_artifactory
-            - jfrog rt npm-install --cache /tmp/npm_cache --no-progress --no-audit --quiet
+            - jfrog rt npmci --cache /tmp/npm_cache --prefer-offline --only=production
             - add_pipeline_files /tmp/npm_cache npm_cache
             - echo "completed"
