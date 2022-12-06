@@ -54,7 +54,7 @@ pipelines:
             - cp -r $res_frontend_gitRepo_resourcePath $shared_workspace
             - rm -rf $steplet_run_state_dir/npmBuildInputGitRepo
 
-      - name: pblsh_frontend
+      - name: publish_frontend
         type: Bash
         configuration:
           runtime:
@@ -66,7 +66,7 @@ pipelines:
                   - "14"
           affinityGroup: frontend
           inputSteps:
-            - name: backend_build
+            - name: frontend_build
           outputResources:
             - name: frontend_package
           integrations:
