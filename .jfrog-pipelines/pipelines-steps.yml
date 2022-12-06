@@ -126,3 +126,22 @@ pipelines:
             - name: build_app
           outputResources:
             - name: app_build
+
+      - name: deploy_staging
+        type: Bash
+        configuration:
+          inputResources:
+            - name: app_build
+        execution:
+          onExecute:
+            - echo "logic to deploy to staging environment"
+
+      - name: deploy_production
+        type: Bash
+        configuration:
+          inputResources:
+            - name: app_build
+              trigger: false
+        execution:
+          onExecute:
+            - echo "logic to deploy to production environment"
