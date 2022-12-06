@@ -135,10 +135,24 @@ pipelines:
         execution:
           onExecute:
             - echo "logic to deploy to staging environment"
+      
+      - name: approvalGate
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: deploy_staging
+          requiresApproval:
+            approvers:
+              - deepikab
+        execution:
+          onExecute:
+            - echo "approved"
 
       - name: deploy_production
         type: Bash
         configuration:
+          inputSteps:
+            - name: approvalGate
           inputResources:
             - name: app_build
               trigger: false
