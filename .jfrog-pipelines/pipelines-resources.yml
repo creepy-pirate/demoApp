@@ -1,0 +1,51 @@
+resources:
+  - name: backend_gitRepo
+    type: GitRepo
+    configuration:
+      path: deepikasl/demoApp
+      gitProvider: deepikaGithub
+      files:
+        include: \bbackend\/.+\b
+      branches:
+        include: ^{{gitBranch}}$
+
+  - name: frontend_gitRepo
+    type: GitRepo
+    configuration:
+      path: deepikasl/demoApp
+      gitProvider: deepikaGithub
+      files:
+        include: \bfrontend\/.+\b
+      branches:
+        include: ^{{gitBranch}}$
+  
+  - name: backend_package
+    type: FileSpec
+    configuration:
+      sourceArtifactory: int_default_artifactory
+      pattern: "libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar"
+      recursive: false
+      flat: true
+
+  - name: frontend_package
+    type: FileSpec
+    configuration:
+      sourceArtifactory: int_default_artifactory
+      pattern: "pip-npm-dev-local/frontend/-/frontend-3.0.0.tgz"
+      recursive: false
+      flat: true
+
+  - name: app_build
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: int_default_artifactory
+
+  - name: app_tested_build
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: int_default_artifactory
+
+  - name: app_promoted_build
+    type: BuildInfo
+    configuration:
+      sourceArtifactory: int_default_artifactory
