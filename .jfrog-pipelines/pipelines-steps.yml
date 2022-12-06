@@ -76,7 +76,7 @@ pipelines:
             - pushd $shared_workspace/frontend_code
             - npm update
             - npm run build
-            - jfrog rt npm-config --repo-deploy pip-npm-dev-local --server-id-deploy demo_art
+            - jfrog rt npm-config --repo-deploy pip-npm-dev-local --server-id-deploy int_default_artifactory
             - jfrog rt npm-publish --detailed-summary
 
       - name: build_app
@@ -91,7 +91,7 @@ pipelines:
             - name: frontend_package
             - name: backend_package
           integrations:
-            - name: demo_art
+            - name: int_default_artifactory
         execution:
           onStart:
             - rm -rf $run_dir/workspace/jfrog
@@ -102,7 +102,7 @@ pipelines:
             - pushd $res_backend_gitRepo_resourcePath
             - cp $res_frontend_package_resourcePath/frontend-3.0.0.tgz ./client.tgz
             - cp $res_backend_package_resourcePath/backend-1.0.0.jar ./server.jar
-            - docker build --pull --no-cache -t $dockerImageName:$dockerImageTag --build-arg REGISTRY=${int_demo_art_url} .
+            - docker build --pull --no-cache -t $dockerImageName:$dockerImageTag --build-arg REGISTRY=${int_int_default_artifactory_url} .
           onSuccess:
             - jfrog rt bce $pipeline_name $run_number
             - jfrog rt docker-push $dockerImageName:$dockerImageTag pip-docker-dev-local --build-name=$pipeline_name --build-number=$run_number
