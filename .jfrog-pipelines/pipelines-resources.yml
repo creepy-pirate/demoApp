@@ -19,6 +19,14 @@ resources:
       branches:
         include: ^{{gitBranch}}$
   
+  - name: frontend_gitRepo_1
+    type: GitRepo
+    configuration:
+      path: deepikasl/vue-frontend
+      gitProvider: deepikaGithub
+      branches:
+        include: ^master$
+  
   - name: backend_package
     type: FileSpec
     configuration:
