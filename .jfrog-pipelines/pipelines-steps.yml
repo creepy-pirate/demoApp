@@ -153,9 +153,16 @@ pipelines:
         configuration:
           inputSteps:
             - name: approvalGate
+        execution:
+          onExecute:
+            - echo "logic to deploy to production environment"
+
+      - name: deploy_pre_production
+        type: Bash
+        configuration:
           inputResources:
             - name: app_build
               trigger: false
         execution:
           onExecute:
-            - echo "logic to deploy to production environment"
+            - echo "logic to deploy to pre production environment"
