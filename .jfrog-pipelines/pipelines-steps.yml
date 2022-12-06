@@ -13,6 +13,7 @@ pipelines:
           deployerSnapshotRepo: libs-snapshot-local
           deployerReleaseRepo: libs-release-local
           mvnCommand: clean install -ntp
+          sourceLocation: backend
           inputResources:
             - name: backend_gitRepo
           integrations:
