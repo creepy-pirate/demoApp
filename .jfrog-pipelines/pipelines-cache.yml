@@ -1,5 +1,5 @@
 pipelines:
-  - name: cache_test
+  - name: cache_test_build
     steps:
       - name: frontend_build
         type: Bash
