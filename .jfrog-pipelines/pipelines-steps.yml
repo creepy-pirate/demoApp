@@ -1,10 +1,15 @@
 pipelines:
-  - name: app_dev
+  - name: app_build
     configuration:
       environmentVariables:
         readOnly:
           JFROG_CLI_BUILD_NAME: app_build
     steps:
+      - name: trigger_all
+        type: Bash
+        execution:
+          onExecute:
+            - echo "triggering all steps now"
       - name: backend_build
         type: MvnBuild
         configuration:
@@ -14,6 +19,8 @@ pipelines:
           deployerReleaseRepo: libs-release-local
           mvnCommand: clean install -ntp
           sourceLocation: backend
+          inputSteps:
+            - name: trigger_all
           inputResources:
             - name: backend_gitRepo
           integrations:
@@ -46,6 +53,8 @@ pipelines:
           npmArgs: --no-progress --no-audit
           sourceLocation: frontend
           repositoryName: pip-npm-virtual
+          inputSteps:
+            - name: trigger_all
           inputResources:
             - name: frontend_gitRepo
           integrations:
