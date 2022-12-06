@@ -74,7 +74,7 @@ pipelines:
             - name: int_default_artifactory
         execution:
           onStart:
-            - pushd $shared_workspace/frontend_code
+            - pushd $shared_workspace/frontend_gitRepo/frontend
             - npm update
             - npm run build
             - jfrog rt npm-config --repo-deploy pip-npm-dev-local --server-id-deploy int_default_artifactory
@@ -84,7 +84,7 @@ pipelines:
         type: Bash
         configuration:
           environmentVariables:
-            dockerImageName: pipdemo.jfrog.io/pip-docker-dev-local/app
+            dockerImageName: jpd220908947.jfrogdev.org/pip-docker-dev-local/app
             dockerImageTag: ${run_number}
           inputResources:
             - name: backend_gitRepo
