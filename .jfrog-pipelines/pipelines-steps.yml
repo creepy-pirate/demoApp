@@ -44,10 +44,10 @@ pipelines:
                   - "14"
           affinityGroup: frontend
           npmArgs: --no-progress --no-audit
-          sourceLocation: .
+          sourceLocation: frontend
           repositoryName: pip-npm-virtual
           inputResources:
-            - name: frontend_gitRepo_1
+            - name: frontend_gitRepo
           integrations:
             - name: int_default_artifactory
         execution:
