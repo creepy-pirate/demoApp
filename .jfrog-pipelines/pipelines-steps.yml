@@ -110,8 +110,8 @@ pipelines:
             - add_run_variables ${step_name}_buildName=${pipeline_name}
           onExecute:
             - pushd $res_backend_gitRepo_resourcePath
-            - cp $res_frontend_package_resourcePath/frontend/frontend-3.0.0.tgz ./client.tgz
-            - cp $res_backend_package_resourcePath/backend/backend-1.0.0.jar ./server.jar
+            - cp $res_frontend_package_resourcePath/frontend-3.0.0.tgz ./client.tgz
+            - cp $res_backend_package_resourcePath/backend-1.0.0.jar ./server.jar
             - pushd backend
             - docker build --pull --no-cache -t $dockerImageName:$dockerImageTag --build-arg REGISTRY=${int_int_default_artifactory_url} .
           onSuccess:
