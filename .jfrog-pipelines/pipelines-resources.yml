@@ -39,7 +39,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: myArtifactory
-      pattern: "pip-npm-dev-local/frontend/-/frontend-3.0.0.tgz"
+      pattern: "test-npm-dev-local/frontend/-/frontend-3.0.0.tgz"
       recursive: false
       flat: true
 
