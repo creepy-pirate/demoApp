@@ -24,7 +24,7 @@ pipelines:
           inputResources:
             - name: backend_gitRepo
           integrations:
-            - name: int_default_artifactory
+            - name: myArtifactory
           outputResources:
             - name: backend_package
           runtime:
@@ -58,7 +58,7 @@ pipelines:
           inputResources:
             - name: frontend_gitRepo
           integrations:
-            - name: int_default_artifactory
+            - name: myArtifactory
         execution:
           onComplete:
             - cp -r $res_frontend_gitRepo_resourcePath $shared_workspace
@@ -80,7 +80,7 @@ pipelines:
           outputResources:
             - name: frontend_package
           integrations:
-            - name: int_default_artifactory
+            - name: myArtifactory
         execution:
           onStart:
             - pushd $shared_workspace/frontend_gitRepo/frontend
@@ -101,7 +101,7 @@ pipelines:
             - name: frontend_package
             - name: backend_package
           integrations:
-            - name: int_default_artifactory
+            - name: myArtifactory
         execution:
           onStart:
             - rm -rf $run_dir/workspace/jfrog
