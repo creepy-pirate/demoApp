@@ -2,8 +2,8 @@ resources:
   - name: backend_gitRepo
     type: GitRepo
     configuration:
-      path: deepikasl/demoApp
-      gitProvider: deepikaGithub
+      path: RjSH1/demoApp
+      gitProvider: myGithub
       files:
         include: \bbackend\/.+\b
       branches:
@@ -12,8 +12,8 @@ resources:
   - name: frontend_gitRepo
     type: GitRepo
     configuration:
-      path: deepikasl/demoApp
-      gitProvider: deepikaGithub
+      path: RjSH1/demoApp
+      gitProvider: myGithub
       files:
         include: \bfrontend\/.+\b
       branches:
@@ -22,15 +22,15 @@ resources:
   - name: frontend_gitRepo_1
     type: GitRepo
     configuration:
-      path: deepikasl/vue-frontend
-      gitProvider: deepikaGithub
+      path: RjSH1/vue-frontend
+      gitProvider: myGithub
       branches:
         include: ^master$
   
   - name: backend_package
     type: FileSpec
     configuration:
-      sourceArtifactory: int_default_artifactory
+      sourceArtifactory: myArtifactory
       pattern: "libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar"
       recursive: false
       flat: true
@@ -46,14 +46,14 @@ resources:
   - name: app_build
     type: BuildInfo
     configuration:
-      sourceArtifactory: int_default_artifactory
+      sourceArtifactory: myArtifactory
 
   - name: app_tested_build
     type: BuildInfo
     configuration:
-      sourceArtifactory: int_default_artifactory
+      sourceArtifactory: myArtifactory
 
   - name: app_promoted_build
     type: BuildInfo
     configuration:
-      sourceArtifactory: int_default_artifactory
+      sourceArtifactory: myArtifactory
