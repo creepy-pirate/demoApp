@@ -18,7 +18,7 @@ pipelines:
           deployerSnapshotRepo: test-libs-snapshot-local
           deployerReleaseRepo: test-libs-release-local
           mvnCommand: clean install -ntp
-          sourceLocation: backend
+          sourceLocation: ./backend
           inputSteps:
             - name: trigger_all
           inputResources:
