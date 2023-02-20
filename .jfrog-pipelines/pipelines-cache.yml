@@ -7,15 +7,15 @@ pipelines:
           inputResources:
             - name: frontend_gitRepo
           integrations:
-            - name: int_default_artifactory
+            - name: myArtifactory
         execution:
           onStart:
             - pushd $res_frontend_gitRepo_resourcePath
             - pushd frontend
-            - use_jfrog_cli int_default_artifactory
+            - use_jfrog_cli myArtifactory
             - mkdir -p /tmp/npm_cache
             - restore_pipeline_files npm_cache /tmp/npm_cache/
-            - jfrog rt npm-config --repo-resolve 'pip-npm-virtual' --server-id-resolve int_default_artifactory
+            - jfrog rt npm-config --repo-resolve 'pip-npm-virtual' --server-id-resolve myArtifactory
             - jfrog rt npmci --cache /tmp/npm_cache --prefer-offline --only=production
             - add_pipeline_files /tmp/npm_cache npm_cache
             - echo "completed"
