@@ -1,5 +1,5 @@
 pipelines:
-  - name: app_build
+  - name: app_build_pipeline
     configuration:
       environmentVariables:
         readOnly:
