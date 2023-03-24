@@ -31,7 +31,7 @@ resources:
     type: FileSpec
     configuration:
       sourceArtifactory: myArtifactory
-      pattern: "libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar"
+      pattern: "test-libs-release-local/com/jfrog/backend/1.0.0/backend-1.0.0.jar"
       recursive: false
       flat: true
 
