@@ -143,7 +143,7 @@ pipelines:
             - name: deploy_staging
           requiresApproval:
             approvers:
-              - deepikab
+              - deepaks
         execution:
           onExecute:
             - echo "approved"
