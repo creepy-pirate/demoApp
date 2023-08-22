@@ -2,8 +2,8 @@ resources:
   - name: backend_gitRepo
     type: GitRepo
     configuration:
-      path: deepikasl/demoApp
-      gitProvider: deepikaGithub
+      path: creepy-pirate/demoApp
+      gitProvider: deepak_git
       files:
         include: \bbackend\/.+\b
       branches:
@@ -12,20 +12,12 @@ resources:
   - name: frontend_gitRepo
     type: GitRepo
     configuration:
-      path: deepikasl/demoApp
-      gitProvider: deepikaGithub
+      path: creepy-pirate/demoApp
+      gitProvider: deepak_git
       files:
         include: \bfrontend\/.+\b
       branches:
         include: ^{{gitBranch}}$
-  
-  - name: frontend_gitRepo_1
-    type: GitRepo
-    configuration:
-      path: deepikasl/vue-frontend
-      gitProvider: deepikaGithub
-      branches:
-        include: ^master$
   
   - name: backend_package
     type: FileSpec
